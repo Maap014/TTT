@@ -1,5 +1,5 @@
 import React from "react";
-import CountDown from "./CountDown";
+import WelcomModal from "./Modals/WelcomeModal";
 
 class GameLogic extends React.Component {
   state = {
@@ -12,6 +12,7 @@ class GameLogic extends React.Component {
     computerWin: 0,
     playerWin: 0,
     isClickable: true,
+    welcomeModal: true,
   };
   blockRef = [undefined, ...Array(9)].map(() => React.createRef());
 
@@ -156,7 +157,11 @@ class GameLogic extends React.Component {
   render() {
     return (
       <>
-        <CountDown seconds={15} />
+        {this.state.welcomeModal && (
+          <WelcomModal
+            closeWelcomeModal={() => this.setState({ welcomeModal: false })}
+          />
+        )}
         <div className="game">
           <div className="board">
             <div
