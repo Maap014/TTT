@@ -1,5 +1,5 @@
 import React from "react";
-import WelcomModal from "./Modals/WelcomeModal";
+import CountDown from "./CountDown";
 
 class GameLogic extends React.Component {
   state = {
@@ -12,7 +12,8 @@ class GameLogic extends React.Component {
     computerWin: 0,
     playerWin: 0,
     isClickable: true,
-    welcomeModal: true,
+    countDown: 15,
+    timerCount: 0,
   };
   blockRef = [undefined, ...Array(9)].map(() => React.createRef());
 
@@ -25,7 +26,6 @@ class GameLogic extends React.Component {
     // if (this.refs["block" + index].className.length > 0) { //not sure
     //   return;
     // }
-    console.log(this.state.isClickable);
 
     if (this.state.isWinner) {
       // if there is a current winner and i click, dont run function
@@ -56,6 +56,25 @@ class GameLogic extends React.Component {
       computerClick: 0,
       isWinner: false,
       isClickable: true,
+    });
+  };
+
+  resetRecord = () => {
+    for (let i = 1; i <= 9; i++) {
+      this.blockRef[i].current.classList = "";
+    }
+
+    this.setState({
+      isWinner: false,
+      userClick: 0,
+      computerClick: 0,
+      isPlayerTurn: true,
+      tieGames: 0,
+      computerWin: 0,
+      playerWin: 0,
+      isClickable: true,
+      countDown: 15,
+      timerCount: 0,
     });
   };
 
@@ -157,11 +176,13 @@ class GameLogic extends React.Component {
   render() {
     return (
       <>
-        {this.state.welcomeModal && (
-          <WelcomModal
-            closeWelcomeModal={() => this.setState({ welcomeModal: false })}
-          />
-        )}
+        <CountDown
+          resetRecord={this.resetRecord}
+          playerScore={this.state.playerWin}
+          computerScore={this.state.computerWin}
+          tieScore={this.state.tieGames}
+          seconds={12}
+        />
         <div className="game">
           <div className="board">
             <div
