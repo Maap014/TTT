@@ -11,7 +11,7 @@ class GameLogic extends React.Component {
     tieGames: 0,
     computerWin: 0,
     playerWin: 0,
-    isClickable: true,
+    isClickable: false,
     countDown: 15,
     timerCount: 0,
   };
