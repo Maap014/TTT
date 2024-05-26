@@ -11,6 +11,7 @@ export default class CountDown extends Component {
 
   startCountDown = () => {
     if (this.state.timerCount === 0) {
+      this.props.toggleLockField(true);
       this.setState({
         timerCount: setInterval(() => {
           this.setState((prev) => ({ countDown: prev.countDown - 1 }));
@@ -19,6 +20,7 @@ export default class CountDown extends Component {
     } else {
       clearInterval(this.state.timerCount);
       this.setState({ timerCount: 0 });
+      this.props.toggleLockField(false);
     }
 
     if (this.state.countDown === 0) {

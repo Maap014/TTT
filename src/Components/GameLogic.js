@@ -23,10 +23,6 @@ class GameLogic extends React.Component {
       return;
     }
 
-    // if (this.refs["block" + index].className.length > 0) { //not sure
-    //   return;
-    // }
-
     if (this.state.isWinner) {
       // if there is a current winner and i click, dont run function
       return;
@@ -76,6 +72,10 @@ class GameLogic extends React.Component {
       countDown: 15,
       timerCount: 0,
     });
+  };
+
+  toggleLockField = (isClickable) => {
+    this.setState({ isClickable });
   };
 
   computerTurn = () => {
@@ -181,7 +181,8 @@ class GameLogic extends React.Component {
           playerScore={this.state.playerWin}
           computerScore={this.state.computerWin}
           tieScore={this.state.tieGames}
-          seconds={12}
+          seconds={20}
+          toggleLockField={this.toggleLockField}
         />
         <div className="game">
           <div className="board">
