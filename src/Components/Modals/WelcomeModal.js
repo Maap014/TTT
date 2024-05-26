@@ -3,6 +3,11 @@ import React, { Component } from "react";
 import "./modalstyles.css";
 
 export default class WelcomModal extends Component {
+  closeModalAndStartGame = () => {
+    setTimeout(this.props.closeWelcomeModal, 100);
+    setTimeout(this.props.startCountDown, 120);
+  };
+
   render() {
     return (
       <div className="modal-container">
@@ -10,12 +15,7 @@ export default class WelcomModal extends Component {
           <p className="welcome-text">Welcome aboard!.. Shall we?</p>
           <div className="btn-container">
             <button>
-              <div
-                className="start-game"
-                onClick={() => {
-                  setTimeout(this.props.closeWelcomeModal, 100);
-                }}
-              >
+              <div className="start-game" onClick={this.closeModalAndStartGame}>
                 Start Game
               </div>
             </button>
