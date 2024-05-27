@@ -23,6 +23,13 @@ class GameLogic extends React.Component {
       return;
     }
 
+    if (
+      this.blockRef[index].current.className === "x" ||
+      this.blockRef[index].current.className === "o"
+    ) {
+      return;
+    }
+
     if (this.state.isWinner) {
       // if there is a current winner and i click, dont run function
       return;
