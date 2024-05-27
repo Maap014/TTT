@@ -10,6 +10,29 @@
   justify-content: center;
   background-color: rgb(47 47 47 / 95%);
   color: #000;
+  animation: dropdown 1500ms;
+}
+
+@keyframes dropdown {
+  0% {
+    transform: translateY(-100vh);
+  }
+  100% {
+    transform: translateY(0vh);
+  }
+}
+
+.swipe-up {
+  animation: swipeup 800ms;
+}
+
+@keyframes swipeup {
+  0% {
+    transform: translateY(-20vh);
+  }
+  100% {
+    transform: translateY(-100vh);
+  }
 }
 
 .modal {

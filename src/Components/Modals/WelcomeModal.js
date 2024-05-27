@@ -1,16 +1,22 @@
 import React, { Component } from "react";
-
 import "./modalstyles.css";
 
 export default class WelcomModal extends Component {
+  modalRef = React.createRef();
+
+  swipeUP = () => {
+    this.modalRef.current.classList.add("swipe-up");
+    setTimeout(this.props.closeWelcomeModal, 750);
+  };
+
   closeModalAndStartGame = () => {
-    setTimeout(this.props.closeWelcomeModal, 100);
-    setTimeout(this.props.startCountDown, 120);
+    this.swipeUP();
+    setTimeout(this.props.startCountDown, 800);
   };
 
   render() {
     return (
-      <div className="modal-container">
+      <div ref={this.modalRef} className="modal-container">
         <div className="modal">
           <p className="welcome-text">Welcome aboard!.. Shall we?</p>
           <div className="btn-container">

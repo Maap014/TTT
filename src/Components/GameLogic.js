@@ -11,7 +11,7 @@ class GameLogic extends React.Component {
     tieGames: 0,
     computerWin: 0,
     playerWin: 0,
-    isClickable: true,
+    isClickable: false,
     countDown: 15,
     timerCount: 0,
   };
@@ -20,6 +20,13 @@ class GameLogic extends React.Component {
   handleClick = (index) => {
     if (!this.state.isClickable) {
       // after clikced bececomes false
+      return;
+    }
+
+    if (
+      this.blockRef[index].current.className === "x" ||
+      this.blockRef[index].current.className === "o"
+    ) {
       return;
     }
 

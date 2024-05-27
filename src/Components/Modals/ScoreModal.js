@@ -2,13 +2,20 @@ import React, { Component } from "react";
 import "./modalstyles.css";
 
 export default class ScoreModal extends Component {
+  modalRef = React.createRef();
+
+  swipeUP = () => {
+    this.modalRef.current.classList.add("swipe-up");
+    setTimeout(this.props.closeWelcomeModal, 750);
+  };
+
   closeModalAndStartGame = () => {
-    setTimeout(this.props.closeWelcomeModal, 100);
-    setTimeout(this.props.reStartGame, 120);
+    this.swipeUP();
+    setTimeout(this.props.reStartGame, 800);
   };
   render() {
     return (
-      <div className="modal-container">
+      <div ref={this.modalRef} className="modal-container">
         <div className="modal score-modal">
           <p className="score-record">
             {`You scored: ${this.props.playerScore}
