@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import WelcomModal from "./Modals/WelcomeModal";
 import ScoreModal from "./Modals/ScoreModal";
+import { formatTime } from "../utils";
 
 export default class CountDown extends Component {
   state = {
@@ -30,8 +31,6 @@ export default class CountDown extends Component {
       this.props.resetRecord();
       this.startCountDown();
     }
-
-    // return () => clearInterval(this.state.timerCount);
   };
 
   componentDidUpdate() {
@@ -60,7 +59,7 @@ export default class CountDown extends Component {
           )
         )}
         <p className={this.state.countDown < 11 ? "less-time" : "count-down"}>
-          Count Down: {this.state.countDown}
+          Count Down: {formatTime(this.state.countDown)}
         </p>
         <button className="pause-play-btn" onClick={this.startCountDown}>
           {this.state.timerCount === 0 ? "Play" : "Pause"}

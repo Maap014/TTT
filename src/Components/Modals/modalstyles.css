@@ -8,7 +8,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(47 47 47 / 95%);
+  background: linear-gradient(
+    109.6deg,
+    rgba(20, 27, 40, 0.877) 11.2%,
+    rgb(36, 59, 85) 91.1%
+  );
+
   color: #000;
   animation: dropdown 1500ms;
 }
@@ -62,7 +67,8 @@
   margin: 3px;
   padding: 10px;
   font-size: 22px;
-  width: 12rem;
+  min-width: 12rem;
+  max-width: 16rem;
 }
 .less-time {
   color: rgb(255, 45, 45);
@@ -115,7 +121,7 @@ button:active {
   color: #fff;
   text-decoration: none;
   height: 3rem;
-  width: 5rem;
+  min-width: 7.5rem;
   display: grid;
   place-content: center;
 }
