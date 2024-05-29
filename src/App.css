@@ -14,7 +14,11 @@ html {
 }
 body {
   margin: 0;
-  background-color: #000;
+  background: linear-gradient(
+    109.6deg,
+    rgb(12 18 29) 11.2%,
+    rgb(41 64 91) 91.1%
+  );
   color: #fff;
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
