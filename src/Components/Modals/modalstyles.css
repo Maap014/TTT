@@ -125,6 +125,7 @@ button:active {
   display: grid;
   place-content: center;
 }
+
 .start-game:visited,
 .start-game:active {
   color: #fff;
