@@ -189,7 +189,7 @@ class GameLogic extends React.Component {
             playerScore={this.state.playerWin}
             computerScore={this.state.computerWin}
             tieScore={this.state.tieGames}
-            seconds={10}
+            seconds={60}
             toggleLockField={this.toggleLockField}
           />
         </div>
