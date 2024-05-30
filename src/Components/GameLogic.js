@@ -183,71 +183,78 @@ class GameLogic extends React.Component {
   render() {
     return (
       <>
-        <CountDown
-          resetRecord={this.resetRecord}
-          playerScore={this.state.playerWin}
-          computerScore={this.state.computerWin}
-          tieScore={this.state.tieGames}
-          seconds={20}
-          toggleLockField={this.toggleLockField}
-        />
-        <div className="game">
-          <div className="board">
-            <div
-              onClick={() => this.handleClick(1)}
-              className="square top left"
-            >
-              <div className="hello" ref={this.blockRef[1]}></div>
-            </div>
-            <div onClick={() => this.handleClick(2)} className="square top">
-              <div ref={this.blockRef[2]}></div>
-            </div>
-            <div
-              onClick={() => this.handleClick(3)}
-              className="square top right"
-            >
-              <div ref={this.blockRef[3]}></div>
-            </div>
-            <div onClick={() => this.handleClick(4)} className="square left">
-              <div ref={this.blockRef[4]}></div>
-            </div>
-            <div onClick={() => this.handleClick(5)} className="square">
-              <div ref={this.blockRef[5]}></div>
-            </div>
-            <div onClick={() => this.handleClick(6)} className="square right">
-              <div ref={this.blockRef[6]}></div>
-            </div>
-            <div
-              onClick={() => this.handleClick(7)}
-              className="square bottom left"
-            >
-              <div ref={this.blockRef[7]}></div>
-            </div>
-            <div onClick={() => this.handleClick(8)} className="square bottom">
-              <div ref={this.blockRef[8]}></div>
-            </div>
-            <div
-              onClick={() => this.handleClick(9)}
-              className="square bottom right"
-            >
-              <div ref={this.blockRef[9]}></div>
+        <div className="timer-container">
+          <CountDown
+            resetRecord={this.resetRecord}
+            playerScore={this.state.playerWin}
+            computerScore={this.state.computerWin}
+            tieScore={this.state.tieGames}
+            seconds={10}
+            toggleLockField={this.toggleLockField}
+          />
+        </div>
+        <div className="game-container">
+          <div className="game">
+            <div className="board">
+              <div
+                onClick={() => this.handleClick(1)}
+                className="square top left"
+              >
+                <div className="hello" ref={this.blockRef[1]}></div>
+              </div>
+              <div onClick={() => this.handleClick(2)} className="square top">
+                <div ref={this.blockRef[2]}></div>
+              </div>
+              <div
+                onClick={() => this.handleClick(3)}
+                className="square top right"
+              >
+                <div ref={this.blockRef[3]}></div>
+              </div>
+              <div onClick={() => this.handleClick(4)} className="square left">
+                <div ref={this.blockRef[4]}></div>
+              </div>
+              <div onClick={() => this.handleClick(5)} className="square">
+                <div ref={this.blockRef[5]}></div>
+              </div>
+              <div onClick={() => this.handleClick(6)} className="square right">
+                <div ref={this.blockRef[6]}></div>
+              </div>
+              <div
+                onClick={() => this.handleClick(7)}
+                className="square bottom left"
+              >
+                <div ref={this.blockRef[7]}></div>
+              </div>
+              <div
+                onClick={() => this.handleClick(8)}
+                className="square bottom"
+              >
+                <div ref={this.blockRef[8]}></div>
+              </div>
+              <div
+                onClick={() => this.handleClick(9)}
+                className="square bottom right"
+              >
+                <div ref={this.blockRef[9]}></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="scores p1">
-          <p className="player1">
-            <span className="p1">Player</span>
-            <span className="p2">Player 1</span> (<span className="x"></span>)
-            <span className="score">{this.state.playerWin}</span>
-          </p>
-          <p className="ties">
-            Tie<span className="score">{this.state.tieGames}</span>
-          </p>
-          <p className="player2">
-            <span className="p1">Computer</span>
-            <span className="p2">Player 2</span> (<span className="o"></span>)
-            <span className="score">{this.state.computerWin}</span>
-          </p>
+          <div className="scores p1">
+            <p className="player1">
+              <span className="p1">Player</span>
+              <span className="p2">Player 1</span> [<span className="x"></span>]
+              <span className="score">{this.state.playerWin}</span>
+            </p>
+            <p className="ties">
+              Tie<span className="score">{this.state.tieGames}</span>
+            </p>
+            <p className="player2">
+              <span className="p1">Computer</span>
+              <span className="p2">Player 2</span> [<span className="o"></span>]
+              <span className="score">{this.state.computerWin}</span>
+            </p>
+          </div>
         </div>
       </>
     );
