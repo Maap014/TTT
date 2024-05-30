@@ -18,18 +18,17 @@ export default class ScoreModal extends Component {
       <div ref={this.modalRef} className="modal-container">
         <div className="modal score-modal">
           <p className="score-record">
-            {`You scored: ${this.props.playerScore}
-            Computer scored: ${this.props.computerScore}
-            Tie score: ${this.props.tieScore}
-            `}
+            <span>You scored: {this.props.playerScore}</span>
+            <span> Computer scored: {this.props.computerScore}</span>
+            <span> Tie score: {this.props.tieScore}</span>
           </p>
-          <p>
+          <p style={{ fontWeight: "600" }}>
             {this.props.playerScore > this.props.computerScore
               ? "You win this round!"
               : this.props.computerScore > this.props.tieScore &&
                 this.props.computerScore > this.props.playerScore
               ? "Computer wins this round!"
-              : "its a tie!"}
+              : "Its a tie!"}
           </p>
           <div className="btn-container">
             <button>

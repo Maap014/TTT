@@ -64,10 +64,10 @@
 
 .count-down,
 .less-time {
-  margin: 3px;
+  margin: 0px;
   padding: 10px;
   font-size: 22px;
-  min-width: 12rem;
+  min-width: 7rem;
   max-width: 16rem;
 }
 .less-time {
@@ -104,7 +104,9 @@ button,
 .pause-play-btn {
   padding: 7px;
   box-shadow: none;
-  margin-left: 5px;
+}
+svg {
+  vertical-align: middle;
 }
 
 .pause-play-btn:active {
@@ -134,4 +136,6 @@ button:active {
 .score-record {
   display: flex;
   flex-direction: column;
+  gap: 4px;
+  margin: 5px 0 0;
 }
