@@ -4,10 +4,12 @@ import ScoreModal from "./Modals/ScoreModal";
 import { formatTime } from "../utils";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { MdTimer } from "react-icons/md";
+import PauseModal from "./Modals/PauseModal";
 
 export default class CountDown extends Component {
   state = {
     welcomeModal: true,
+    pauseModal: false,
     countDown: this.props.seconds,
     timerCount: 0,
   };
@@ -21,9 +23,7 @@ export default class CountDown extends Component {
         }, 1000),
       });
     } else {
-      clearInterval(this.state.timerCount);
-      this.setState({ timerCount: 0 });
-      this.props.toggleLockField(false);
+      this.pasueCountdown();
     }
 
     if (this.state.countDown === 0) {
@@ -31,8 +31,27 @@ export default class CountDown extends Component {
         countDown: this.props.seconds,
       });
       this.props.resetRecord();
-      this.startCountDown();
     }
+  };
+
+  pasueCountdown = () => {
+    clearInterval(this.state.timerCount);
+    this.setState({ timerCount: 0, pauseModal: true });
+    this.props.toggleLockField(false);
+  };
+
+  restartGame = () => {
+    clearInterval(this.state.timerCount);
+    this.setState(
+      {
+        countDown: this.props.seconds,
+        timerCount: 0,
+        pauseModal: false,
+      },
+      this.startCountDown
+    );
+    this.props.resetRecord();
+    this.props.toggleLockField(true);
   };
 
   componentDidUpdate() {
@@ -50,7 +69,7 @@ export default class CountDown extends Component {
             playerScore={this.props.playerScore}
             computerScore={this.props.computerScore}
             tieScore={this.props.tieScore}
-            reStartGame={this.startCountDown}
+            reStartGame={this.restartGame}
           />
         ) : (
           this.state.welcomeModal && (
@@ -60,11 +79,21 @@ export default class CountDown extends Component {
             />
           )
         )}
+        {this.state.pauseModal && (
+          <PauseModal
+            closePaueCountdown={() => this.setState({ pauseModal: false })}
+            startCountDown={this.startCountDown}
+          />
+        )}
         <p className={this.state.countDown < 11 ? "less-time" : "count-down"}>
           <MdTimer />: {formatTime(this.state.countDown)}
         </p>
         <button className="pause-play-btn" onClick={this.startCountDown}>
-          {this.state.timerCount === 0 ? <FaPlay /> : <FaPause />}
+          {this.state.timerCount === 0 ? (
+            <FaPlay />
+          ) : (
+            <FaPause onClick={this.pasueCountdown} />
+          )}
         </button>
       </>
     );

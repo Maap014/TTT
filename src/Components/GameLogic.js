@@ -35,6 +35,10 @@ class GameLogic extends React.Component {
       return;
     }
 
+    if (this.toggleLockField() && this.resetGame()) {
+      return;
+    }
+
     this.blockRef[index].current.className = "x"; //set className
     this.blockRef[index].current.classList.add("x"); // add className
     this.checkForWinner(); //lets go down... chimooo
@@ -83,6 +87,7 @@ class GameLogic extends React.Component {
 
   toggleLockField = (isClickable) => {
     this.setState({ isClickable });
+    return;
   };
 
   computerTurn = () => {
@@ -191,6 +196,7 @@ class GameLogic extends React.Component {
             tieScore={this.state.tieGames}
             seconds={60}
             toggleLockField={this.toggleLockField}
+            resetGame={this.resetGame}
           />
         </div>
         <div className="game-container">

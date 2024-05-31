@@ -1,4 +1,5 @@
-.modal-container {
+.modal-container,
+.pause-mode {
   position: fixed;
   z-index: 1;
   left: 0;
@@ -13,7 +14,6 @@
     rgba(20, 27, 40, 0.877) 11.2%,
     rgb(36, 59, 85) 91.1%
   );
-
   color: #000;
   animation: dropdown 1500ms;
 }
@@ -24,6 +24,32 @@
   }
   100% {
     transform: translateY(0vh);
+  }
+}
+
+.pause-mode {
+  animation: swipein 500ms;
+}
+
+@keyframes swipein {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.swipe-out {
+  animation: swipeout 400ms;
+}
+
+@keyframes swipeout {
+  0% {
+    transform: translateX(-0%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
 
@@ -52,10 +78,15 @@
   gap: 3rem;
 }
 
-.welcome-text {
+.welcome-text,
+.pause-text {
   font-size: 2rem;
   margin: 0;
   font-weight: 600;
+}
+
+.pause-text {
+  font-size: 4rem;
 }
 
 .score-modal {
@@ -67,8 +98,8 @@
   margin: 0px;
   padding: 10px;
   font-size: 22px;
-  min-width: 7rem;
-  max-width: 16rem;
+  width: 9rem;
+  text-align: center;
 }
 .less-time {
   color: rgb(255, 45, 45);
